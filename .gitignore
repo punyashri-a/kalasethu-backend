@@ -1,0 +1,48 @@
+# Compiled output
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Environment & Credentials (CRITICAL: Do not commit actual secrets)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.p12
+
+# IDE & Editor Files
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+.classpath
+.project
+.settings/
+.springBeans
+.sts4-cache
+.apt_generated/
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db
+
+# Log Files
+*.log
+logs/
+
+# Maven Wrapper
+.mvn/wrapper/maven-wrapper.jar
