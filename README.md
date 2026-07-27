@@ -1,26 +1,20 @@
-# 🎭 Kalasethu Backend Service
+# Kalasethu Backend Service
 
-[![Java 21](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
-[![Spring Boot 3.4](https://img.shields.io/badge/Spring%20Boot-3.4-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-[![Maven](https://img.shields.io/badge/Maven-3.8+-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](https://maven.apache.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg?style=for-the-badge)](LICENSE)
-
-> **Kalasethu** (*Kala* = Art & Culture, *Sethu* = Bridge) is a dedicated backend web service engineered to connect traditional Indian classical performing arts with modern digital platforms. Built on Spring Boot and PostgreSQL, it delivers high-performance RESTful APIs for managing classical artists, dance repertoires, performance cataloging, and administrative workflows.
+> **Kalasethu** (*Kala* = Art & Culture, *Sethu* = Bridge) is a backend web service designed to connect traditional Indian classical performing arts with modern digital platforms. Built using Spring Boot and PostgreSQL, it provides RESTful APIs for managing classical artists, dance repertoires, performance cataloging, and administrative workflows.
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
-- **🧑‍🎨 Artist Profile Management**: Full CRUD REST APIs to onboard artists, track joining dates, manage active status, and store contact information.
-- **💃 Classical Dance Repertoire**: Centralized catalog for classical dance forms (e.g., Bharatanatyam, Kathak, Odissi), performance durations, and cultural descriptions.
-- **🔐 Secure Configuration Strategy**: Zero-hardcoded credentials policy with Spring environment variable interpolation (`${DB_PASSWORD:}`).
-- **⚡ Layered Architecture**: Strict separation of concerns across Controllers, Business Services, Spring Data Repositories, and JPA Entities.
-- **🛡 Enterprise Persistence**: PostgreSQL database integration powered by Spring Data JPA and Hibernate for automatic schema generation and data integrity.
+- **Artist Profile Management**: REST APIs to onboard artists, track joining dates, manage active status, and store contact details.
+- **Classical Dance Repertoire**: Centralized catalog for classical dance forms (such as Bharatanatyam, Kathak, and Odissi), performance durations, and cultural descriptions.
+- **Secure Configuration Strategy**: Sensitive credentials (such as database passwords) are externalized using Spring environment variable interpolation (`${DB_PASSWORD:}`).
+- **Layered Architecture**: Clear separation of concerns across Controllers, Business Services, Spring Data Repositories, and JPA Entities.
+- **Reliable Data Persistence**: PostgreSQL database integration powered by Spring Data JPA and Hibernate for automatic schema generation and data integrity.
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Domain | Technology | Purpose |
 | :--- | :--- | :--- |
@@ -28,12 +22,12 @@
 | **Framework** | Spring Boot 3.4 | REST Controllers, Dependency Injection, Application Context |
 | **Data Access** | Spring Data JPA / Hibernate | Object-Relational Mapping (ORM) & Database Operations |
 | **Database** | PostgreSQL | Relational database storage |
-| **Utilities** | Lombok | Auto-generation of getters, setters, constructors, and standard boilerplate |
+| **Utilities** | Lombok | Auto-generation of getters, setters, constructors, and boilerplate |
 | **Build & Dependency Tool** | Apache Maven | Dependency management & project lifecycle automation |
 
 ---
 
-## 📁 Project Architecture
+## Project Architecture
 
 ```text
 kalasethu-backend/
@@ -57,14 +51,14 @@ kalasethu-backend/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-Before running the application, ensure you have the following installed on your machine:
-* **JDK 21** or later: Verify with `java -version`
-* **PostgreSQL** (v15+ recommended): Running locally on port `5432` or via cloud/Docker
-* **Git**: For source version control
+Before running the application, ensure you have the following installed on your system:
+* **JDK 21** or later (`java -version`)
+* **PostgreSQL** (v15+ recommended) running locally or via Docker
+* **Git** for version control
 
 ---
 
@@ -78,11 +72,11 @@ CREATE DATABASE kalasethu_db;
 
 ---
 
-### 2. Environment Configuration & Hiding Credentials
+### 2. Environment Configuration
 
-Kalasethu strictly separates application logic from secret credentials. Sensitive credentials like database passwords are **never hardcoded** in the codebase.
+Kalasethu strictly separates application logic from secret credentials. Sensitive credentials are never hardcoded in the source code.
 
-1. Create your local `.env` file or set environment variables in your environment:
+1. Set up your local environment variables:
 
    ```bash
    export DB_URL=jdbc:postgresql://localhost:5432/kalasethu_db
@@ -91,7 +85,7 @@ Kalasethu strictly separates application logic from secret credentials. Sensitiv
    export SERVER_PORT=8080
    ```
 
-2. `.gitignore` is pre-configured to ensure `.env`, secret key files (`*.key`, `*.pem`), build targets (`target/`), and IDE settings (`.idea/`, `.vscode/`) are never committed to version control.
+2. `.gitignore` is pre-configured to ensure `.env` files, build output (`target/`), and IDE configurations (`.idea/`, `.vscode/`) are excluded from version control.
 
 ---
 
@@ -111,13 +105,13 @@ cd kalasethu-backend
 ./mvnw spring-boot:run
 ```
 
-The service will start listening at `http://localhost:8080`.
+The service will be available at `http://localhost:8080`.
 
 ---
 
-## 📖 API Documentation & Reference
+## API Documentation & Reference
 
-### 🧑‍🎨 Artists API (`/artists`)
+### Artists API (`/artists`)
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
@@ -153,7 +147,7 @@ curl -X POST http://localhost:8080/artists \
 
 ---
 
-### 💃 Dance Repertoire API (`/dances`)
+### Dance Repertoire API (`/dances`)
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
@@ -189,29 +183,30 @@ curl -X POST http://localhost:8080/dances \
 
 ---
 
-## 🔒 Security Best Practices
+## Security Best Practices
 
-- **Zero Hardcoded Secrets**: All environment-sensitive properties use dynamic Spring placeholders (e.g. `${DB_PASSWORD:}`).
-- **Strict `.gitignore` Enforcements**: Prevents unintended leakage of `.env`, database configuration files, and IDE workspace data.
-- **Parametrized SQL Queries**: Handled via Spring Data JPA to safeguard against SQL injection risks.
+- **Zero Hardcoded Secrets**: All environment-sensitive properties use dynamic Spring placeholders (`${DB_PASSWORD:}`).
+- **Strict `.gitignore` Policy**: Prevents accidental leakage of `.env` files, database credentials, build artifacts, and IDE configurations.
+- **Parameterized SQL Queries**: Managed via Spring Data JPA to prevent SQL injection vulnerabilities.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-Contributions, feedback, and feature suggestions are always welcome!
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+Contributions, feedback, and suggestions are always welcome!
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature-name`)
+3. Commit your changes (`git commit -m 'Add your feature description'`)
+4. Push to your branch (`git push origin feature/your-feature-name`)
 5. Open a Pull Request
 
 ---
 
-## 📜 License
+## License
 
-Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more details.
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
 
 ---
 
-<p center><i>Crafted with ❤️ to empower classical Indian performing arts through technology.</i></p>
+<p align="center"><i>Crafted to empower classical Indian performing arts through technology.</i></p>
