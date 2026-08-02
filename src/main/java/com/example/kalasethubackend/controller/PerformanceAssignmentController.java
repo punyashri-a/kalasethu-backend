@@ -1,6 +1,8 @@
 package com.example.kalasethubackend.controller;
 
 import com.example.kalasethubackend.model.Artist;
+import com.example.kalasethubackend.model.Dance;
+import com.example.kalasethubackend.model.Performance;
 import com.example.kalasethubackend.model.PerformanceAssignment;
 import com.example.kalasethubackend.service.PerformanceAssignmentService;
 import org.springframework.web.bind.annotation.*;
@@ -44,5 +46,20 @@ public class PerformanceAssignmentController {
     @GetMapping("/performances/{performanceId}/artists")
     public List<Artist> getArtistsByPerformance(@PathVariable Long performanceId){
         return performanceAssignmentService.getArtistsByPerformance(performanceId);
+    }
+
+    @GetMapping("/performances/{performanceId}/dances")
+    public List<Dance> getDanceByPerformance(@PathVariable Long performanceId){
+        return performanceAssignmentService.getDanceByPerformance(performanceId);
+    }
+
+    @GetMapping("/artists/{artistId}/performances")
+    public List<Performance> getPerformanceByArtist(@PathVariable Long artistId){
+        return performanceAssignmentService.getPerformanceByArtist(artistId);
+    }
+
+    @GetMapping("/dances/{danceId}/artists")
+    public List<Artist> getArtistByDance(@PathVariable Long danceId){
+        return performanceAssignmentService.getArtistByDance(danceId);
     }
 }
