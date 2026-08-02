@@ -1,6 +1,8 @@
 package com.example.kalasethubackend.service;
 
 import com.example.kalasethubackend.model.Artist;
+import com.example.kalasethubackend.model.Dance;
+import com.example.kalasethubackend.model.Performance;
 import com.example.kalasethubackend.model.PerformanceAssignment;
 import com.example.kalasethubackend.repository.PerformanceAssignmentRepository;
 import org.springframework.stereotype.Service;
@@ -49,6 +51,40 @@ public class PerformanceAssignmentService {
             artists.add(performanceAssignment.getArtist());
         }
 
+        return artists;
+    }
+
+    public List<Dance> getDanceByPerformance(Long performanceId){
+        List<PerformanceAssignment> performanceAssignments = performanceAssignmentRepository.findByPerformancePerformanceId(performanceId);
+
+       List<Dance> dances = new ArrayList<>();
+
+       for(PerformanceAssignment performanceAssignment : performanceAssignments){
+           dances.add(performanceAssignment.getDance());
+       }
+       return dances;
+    }
+
+
+    public List<Performance> getPerformanceByArtist(Long artistId){
+        List<PerformanceAssignment> performanceAssignments = performanceAssignmentRepository.findByArtistArtistId(artistId);
+
+        List<Performance> performances = new ArrayList<>();
+
+        for(PerformanceAssignment performanceAssignment : performanceAssignments){
+            performances.add(performanceAssignment.getPerformance());
+        }
+        return performances;
+    }
+
+    public List<Artist> getArtistByDance(Long danceId){
+        List<PerformanceAssignment> performanceAssignments = performanceAssignmentRepository.findByDanceDanceId(danceId);
+
+        List<Artist> artists = new ArrayList<>();
+
+        for(PerformanceAssignment performanceAssignment : performanceAssignments){
+            artists.add(performanceAssignment.getArtist());
+        }
         return artists;
     }
 }
