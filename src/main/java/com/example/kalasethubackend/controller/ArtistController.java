@@ -42,5 +42,8 @@ public class ArtistController {
          artistService.deleteArtistById(id);
     }
 
-
+    @GetMapping("/active")
+    public List<Artist> getActiveArtists(){
+        return artistService.getActiveArtists();
+    }
 }
