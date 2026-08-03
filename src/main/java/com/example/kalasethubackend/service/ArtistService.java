@@ -36,4 +36,9 @@ public class ArtistService {
     public void deleteArtistById(@PathVariable Long id) {
          artistRepo.deleteById(id);
     }
+
+    public List<Artist> getActiveArtists(){
+        return artistRepo.findByActiveTrue();
+    }
+
 }

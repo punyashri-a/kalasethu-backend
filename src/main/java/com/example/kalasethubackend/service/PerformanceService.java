@@ -1,5 +1,6 @@
 package com.example.kalasethubackend.service;
 
+import com.example.kalasethubackend.model.Artist;
 import com.example.kalasethubackend.model.Performance;
 import com.example.kalasethubackend.repository.PerformanceRepository;
 import org.springframework.stereotype.Service;
@@ -35,4 +36,13 @@ public class PerformanceService {
     public void deletePerformanceById(Long id) {
         performanceRepository.deleteById(id);
     }
+
+    public List<Performance> getPerformanceByCity(String city){
+        return performanceRepository.findByCity(city);
+    }
+
+    public List<Performance> getPerformanceByStatus(String status){
+        return performanceRepository.findByStatus(status);
+    }
+
 }

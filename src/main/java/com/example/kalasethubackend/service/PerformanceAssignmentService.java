@@ -87,4 +87,6 @@ public class PerformanceAssignmentService {
         }
         return artists;
     }
+
+
 }

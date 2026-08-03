@@ -1,5 +1,6 @@
 package com.example.kalasethubackend.repository;
 
+import com.example.kalasethubackend.model.Performance;
 import com.example.kalasethubackend.model.PerformanceAssignment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -13,5 +14,6 @@ public interface PerformanceAssignmentRepository extends JpaRepository<Performan
     List<PerformanceAssignment> findByArtistArtistId(Long artistArtistId);
 
     List<PerformanceAssignment> findByDanceDanceId(Long danceDanceId);
+
 
 }

@@ -24,6 +24,4 @@ public class Performance {
     private double payment;
     private String status;
 
-
-
 }

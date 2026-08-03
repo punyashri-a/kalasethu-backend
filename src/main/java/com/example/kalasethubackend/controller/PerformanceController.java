@@ -1,5 +1,6 @@
 package com.example.kalasethubackend.controller;
 
+import com.example.kalasethubackend.model.Artist;
 import com.example.kalasethubackend.model.Performance;
 import com.example.kalasethubackend.service.PerformanceService;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,16 @@ public class PerformanceController {
     @DeleteMapping("/{id}")
     public void deletePerformanceById(@PathVariable Long id){
         performanceService.deletePerformanceById(id);
+    }
+
+    @GetMapping("/city/{city}")
+    public List<Performance> getPerformanceByCity(@PathVariable String city){
+        return performanceService.getPerformanceByCity(city);
+    }
+
+    @GetMapping("/status/{status}")
+    public List<Performance> getPerformanceByStatus(@PathVariable String status){
+        return performanceService.getPerformanceByStatus(status);
     }
 
 }
