@@ -36,4 +36,8 @@ public class DanceService {
     public void deleteDanceById(@PathVariable Long id) {
         danceRepository.deleteById(id);
     }
+
+    public List<Dance> searchDanceByName(String danceName){
+        return danceRepository.findByDanceNameContainingIgnoreCase(danceName);
+    }
 }

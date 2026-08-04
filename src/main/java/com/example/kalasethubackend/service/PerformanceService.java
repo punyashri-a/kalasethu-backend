@@ -45,4 +45,8 @@ public class PerformanceService {
         return performanceRepository.findByStatus(status);
     }
 
+    public List<Performance> getUpcomingPerformances(){
+        return performanceRepository.findByStatus("UPCOMING");
+    }
+
 }

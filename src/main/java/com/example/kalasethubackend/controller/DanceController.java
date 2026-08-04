@@ -2,6 +2,7 @@ package com.example.kalasethubackend.controller;
 
 import com.example.kalasethubackend.model.Dance;
 import com.example.kalasethubackend.service.DanceService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class DanceController {
     }
 
     @PostMapping
-    public Dance addDance(@RequestBody Dance dance){
+    public Dance addDance(@Valid @RequestBody Dance dance){
         return danceService.addDance(dance);
     }
 
@@ -32,12 +33,17 @@ public class DanceController {
     }
 
     @PutMapping("/{id}")
-    public Dance updateDanceById(@PathVariable Long id, @RequestBody Dance dance){
+    public Dance updateDanceById(@PathVariable Long id,@Valid @RequestBody Dance dance){
         return danceService.updateDanceById(id,dance);
     }
 
     @DeleteMapping("/{id}")
     public void deleteDanceById(@PathVariable Long id){
         danceService.deleteDanceById(id);
+    }
+
+    @GetMapping("/search/{danceName}")
+    public List<Dance> searchDanceByName(@PathVariable String danceName){
+        return danceService.searchDanceByName(danceName);
     }
 }

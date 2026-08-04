@@ -3,6 +3,7 @@ package com.example.kalasethubackend.controller;
 import com.example.kalasethubackend.model.Artist;
 import com.example.kalasethubackend.model.Performance;
 import com.example.kalasethubackend.service.PerformanceService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class PerformanceController {
     }
 
     @PostMapping
-    public Performance addPerformance(@RequestBody Performance performance){
+    public Performance addPerformance(@Valid @RequestBody Performance performance){
         return performanceService.addPerformance(performance);
     }
 
@@ -32,7 +33,7 @@ public class PerformanceController {
     }
 
     @PutMapping("/{id}")
-    public Performance updatePerformance(@PathVariable Long id,@RequestBody Performance performance){
+    public Performance updatePerformance(@PathVariable Long id,@Valid @RequestBody Performance performance){
         return performanceService.updatePerformance(performance,id);
     }
 
@@ -49,6 +50,11 @@ public class PerformanceController {
     @GetMapping("/status/{status}")
     public List<Performance> getPerformanceByStatus(@PathVariable String status){
         return performanceService.getPerformanceByStatus(status);
+    }
+
+    @GetMapping("/upcoming")
+    public List<Performance> getUpcomingPerformances(){
+        return performanceService.getUpcomingPerformances();
     }
 
 }

@@ -5,6 +5,7 @@ import com.example.kalasethubackend.model.Dance;
 import com.example.kalasethubackend.model.Performance;
 import com.example.kalasethubackend.model.PerformanceAssignment;
 import com.example.kalasethubackend.service.PerformanceAssignmentService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class PerformanceAssignmentController {
     }
 
     @PostMapping
-    public PerformanceAssignment addAssignment(@RequestBody PerformanceAssignment assignment){
+    public PerformanceAssignment addAssignment(@Valid @RequestBody PerformanceAssignment assignment){
         return performanceAssignmentService.addAssignment(assignment);
     }
 
@@ -34,7 +35,7 @@ public class PerformanceAssignmentController {
     }
 
     @PutMapping("/{id}")
-    public PerformanceAssignment updateAssignment(@PathVariable("id") Long assignmentId,@RequestBody PerformanceAssignment assignment){
+    public PerformanceAssignment updateAssignment(@PathVariable("id") Long assignmentId,@Valid @RequestBody PerformanceAssignment assignment){
         return performanceAssignmentService.updateAssignment(assignmentId,assignment);
     }
 

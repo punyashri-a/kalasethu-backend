@@ -2,6 +2,7 @@ package com.example.kalasethubackend.controller;
 
 import com.example.kalasethubackend.model.Artist;
 import com.example.kalasethubackend.service.ArtistService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
 
@@ -18,7 +19,7 @@ public class ArtistController {
     }
 
     @PostMapping
-    public Artist addArtist(@RequestBody Artist artist){
+    public Artist addArtist(@Valid @RequestBody Artist artist){
         return artistService.addArtist(artist);
     }
 
@@ -33,7 +34,7 @@ public class ArtistController {
     }
 
     @PutMapping("/{id}")
-    public Artist updateArtist(@PathVariable Long id,@RequestBody Artist artist){
+    public Artist updateArtist(@PathVariable Long id,@Valid @RequestBody Artist artist){
         return artistService.updateArtist(id,artist);
     }
 
